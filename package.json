@@ -1,6 +1,6 @@
 {
 	"name": "svelte-web-storage",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"homepage": "https://captaincodeman.github.io/svelte-web-storage/",
 	"repository": {
 		"type": "git",
@@ -71,6 +71,7 @@
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"module": "./dist/index.js",
 	"type": "module",
 	"dependencies": {
 		"esm-env": "^1.0.0"
