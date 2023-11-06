@@ -4,7 +4,7 @@ A [Svelte writable store](https://svelte.dev/docs/svelte-store#writable) that sa
 
 ## Features
 
-- ✅ Tiny size - just 608 bytes minified / 390 bytes minified & gzipped
+- ✅ Tiny size - just 589 bytes minified / 380 bytes minified & gzipped
 - ✅ Supports `localStorage` for persistence and cross-tab synchronization
 - ✅ Supports `sessionStorage` for independent per-tab values
 - ✅ Store objects or atomic values
@@ -49,6 +49,17 @@ export const settings = web_storage('settings, {
 }, false) // <== disables persistence
 ```
 
-## NOTE
+## Upgrading
 
-If you add new properties to your settings object, they will be automatically added to any persisted values.
+If you add new properties to your settings object, the new default values of those properties will be automatically added to any persisted values. Adding a `theme` property to the previous example would set the store value to `system`, but leave any existing customized properties unchanged. No need to manually handle properties missing from the persisted state, or your settings having possibly undefined values.
+
+```ts
+import { web_storage } from 'svelte-web-storage'
+
+export const settings = web_storage('settings, {
+  page_size: 24,
+  currency: 'USD',
+  language: 'en-US',
+  theme: 'system',
+})
+```
