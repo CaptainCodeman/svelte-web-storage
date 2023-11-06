@@ -5,8 +5,8 @@
 
 <p>Description & instructions ...</p>
 
-<iframe src="/example" />
-<iframe src="/example" />
+<iframe src="/example" title="Example"/>
+<iframe src="/example" title="Example"/>
 
 <style>
   iframe {

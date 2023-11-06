@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
 	plugins: [sveltekit()],
 	define: {
-		'import.meta.vitest': 'undefined',
+		'import.meta.vitest': 'undefined'
 	},
 	test: {
 		globals: true,

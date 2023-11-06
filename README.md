@@ -1,15 +1,15 @@
 # svelte-web-storage
 
-A [Svelte writable store](https://svelte.dev/docs/svelte-store#writable) that saves updates to [Web-Storage ](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API).
+A [Svelte writable store](https://svelte.dev/docs/svelte-store#writable) that saves values to [Web-Storage ](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API). Great for persisting settings or preference objects within your Svelte apps.
 
 ## Features
 
-* ✅ Tiny size, just 571 minified bytes
-* ✅ Supports `localStorage` for persistence and cross-tab synchronization
-* ✅ Supports `sessionStorage` for per-instance values
-* ✅ Store objects or atomic values
-* ✅ New default properties automatically added to persisted values
-* ✅ Server-side-rendering (SSR) compatible
+- ✅ Tiny size - just 608 bytes minified / 390 bytes minified & gzipped
+- ✅ Supports `localStorage` for persistence and cross-tab synchronization
+- ✅ Supports `sessionStorage` for independent per-tab values
+- ✅ Store objects or atomic values
+- ✅ New default properties automatically added to persisted values
+- ✅ Server-side-rendering (SSR) compatible
 
 ## Usage
 
@@ -48,3 +48,7 @@ export const settings = web_storage('settings, {
   language: 'en-US',
 }, false) // <== disables persistence
 ```
+
+## NOTE
+
+If you add new properties to your settings object, they will be automatically added to any persisted values.
