@@ -49,7 +49,3 @@ export function web_storage<T>(name: string, defaultValue: T, persist = true) {
 		update
 	};
 }
-
-if (import.meta.vitest) {
-	// TODO
-}
