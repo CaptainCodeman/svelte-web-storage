@@ -9,19 +9,19 @@ const noopStorage = {
 };
 
 export interface Options<T> {
-	persist?: boolean
+	persist?: boolean;
 	serializer?: {
-		parse: (text: string) => T
-		stringify: (value: T) => string
-	}
+		parse: (text: string) => T;
+		stringify: (value: T) => string;
+	};
 }
 
 export function web_storage<T>(name: string, defaultValue: T, options?: Options<T>) {
-	const { persist, serializer } = { persist: true, serializer: JSON, ...options }
+	const { persist, serializer } = { persist: true, serializer: JSON, ...options };
 	const storage = BROWSER ? (persist ? localStorage : sessionStorage) : noopStorage;
 
 	const persisted = storage.getItem(name);
-	const parsed = persisted ? serializer.parse(persisted) : null
+	const parsed = persisted ? serializer.parse(persisted) : null;
 
 	let value =
 		typeof defaultValue === 'object'
