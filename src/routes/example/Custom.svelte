@@ -9,6 +9,19 @@
     select: '',
   }, {
     persist,
+    serializer: {
+      parse(text: string) {
+        const parts = text.split(':')
+        return {
+          range: parseInt(parts[0]),
+          toggle: parts[1] === 'true',
+          select: parts[2],
+        }
+      },
+      stringify(value) {
+        return `${value.range}:${value.toggle}:${value.select}`
+      }
+    }
   })
 </script>
 
