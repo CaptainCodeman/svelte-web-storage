@@ -1,6 +1,6 @@
 {
 	"name": "svelte-web-storage",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"homepage": "https://captaincodeman.github.io/svelte-web-storage/",
 	"repository": {
 		"type": "git",
@@ -17,6 +17,7 @@
 		"writable",
 		"store",
 		"stores",
+		"storage",
 		"webstorage",
 		"web-storage",
 		"localstorage",
@@ -25,7 +26,10 @@
 		"session-storage",
 		"persist",
 		"persisted",
-		"persistence"
+		"persistent",
+		"persistence",
+		"config",
+		"settings"
 	],
 	"license": "MIT",
 	"scripts": {
