@@ -95,7 +95,7 @@ export const settings = web_storage('settings, {
 
 ## Comparison (work in progress)
 
-There are lots of packages that do similar things to this lib, so why might you want to use this one? I've tried to put together a comparison of all the ones I could find - I'm not claiming it's an exhaustive or 100% accurate liste, so let me know if there is something I've missed or you think is incorrect.
+There are lots of packages that do similar things to this lib, so why might you want to use this one? I've tried to put together a comparison of all the ones I could find - I'm not claiming it's an exhaustive or a 100% accurate list, so let me know if there is something I've missed or you think is incorrect.
 
 The criteria for comparing includes:
 
