@@ -23,7 +23,7 @@ export function web_storage<T>(name: string, defaultValue: T, options?: Options<
 	const persisted = storage.getItem(name);
 	const parsed = persisted ? serializer.parse(persisted) : null;
 
-	let value =
+	let value: T =
 		typeof defaultValue === 'object'
 			? { ...defaultValue, ...(persisted ? parsed : {}) }
 			: persisted
