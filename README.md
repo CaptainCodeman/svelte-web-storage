@@ -4,7 +4,7 @@ A [Svelte writable store](https://svelte.dev/docs/svelte-store#writable) that sa
 
 ## Features
 
-- ✅ Tiny size - just 634 bytes minified / 403 bytes minified & gzipped
+- ✅ Tiny size - just 629 bytes minified / 397 bytes minified & gzipped
 - ✅ Supports `localStorage` for persistence and cross-tab synchronization
 - ✅ Supports `sessionStorage` for independent per-tab values
 - ✅ Store objects or atomic values
@@ -124,7 +124,7 @@ The criteria for comparing includes:
 
 | Name                                | Version | Minified | GZipped | Correct | Upgrade | SSR | SK Deps | Session | Sync | Values | TS  | Serialize |
 | ----------------------------------- | ------- | -------: | ------: | :-----: | :-----: | :-: | :-----: | :-----: | :--: | :----: | :-: | :-------: |
-| svelte-web-storage                  | 0.0.2   |     640B |    403B |   ✅    |   ✅    | ✅  |   ✅    |   ✅    |  ✅  |   ✅   | ✅  |    ✅     |
+| svelte-web-storage                  | 0.0.2   |     629B |    397B |   ✅    |   ✅    | ✅  |   ✅    |   ✅    |  ✅  |   ✅   | ✅  |    ✅     |
 | svelte-persisted-store              | 0.7.0   |   1.24kB |    650B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
 | svelte-persistent-store             | 0.1.6   |    1.7kB |    837B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
 | svelte-backed-store                 | 1.1.1   |    3.5kB |  1.25kB |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |

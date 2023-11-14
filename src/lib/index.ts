@@ -25,7 +25,7 @@ export function web_storage<T>(name: string, defaultValue: T, options?: Options<
 
 	let value: T =
 		typeof defaultValue === 'object'
-			? { ...defaultValue, ...(persisted ? parsed : {}) }
+			? { ...defaultValue, ...parsed }
 			: persisted
 			? parsed
 			: defaultValue;
