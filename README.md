@@ -27,7 +27,7 @@ Import and create a `Writable` store, just as you would with the default Svelte 
 ```ts
 import { web_storage } from 'svelte-web-storage'
 
-export const settings = web_storage('settings, {
+export const settings = web_storage('settings', {
   page_size: 24,
   currency: 'USD',
   language: 'en-US',
@@ -43,11 +43,30 @@ To use `sessionStorage` which isn't persisted or synchronized across tabs, use a
 ```ts
 import { web_storage } from 'svelte-web-storage'
 
-export const settings = web_storage('settings, {
+export const settings = web_storage('settings', {
   page_size: 24,
   currency: 'USD',
   language: 'en-US',
 }, { persist: false }) // <== disables persistence
+```
+
+### Upgrading Objects
+
+If you add new properties to your settings object, the new default values of those properties will be automatically added to any persisted values. Adding a `theme` property to the previous example would set its store value to `system`, but leave any existing customized properties unchanged. No need to manually handle properties missing from the persisted state, or your settings having possibly undefined values.
+
+```ts
+import { web_storage } from 'svelte-web-storage'
+
+export const settings = web_storage('settings', {
+  page_size: 24,
+  currency: 'USD',
+  language: 'en-US'
+});
+
+$settings.theme = 'system';
+
+console.log(JSON.stringify($settings));
+// { "page_size":24, "currency":"USD", "language":"en-US", "theme":"system" }
 ```
 
 ### Custom Serialization
@@ -57,7 +76,7 @@ Persisted data is stored using `JSON.parse` and `JSON.stringify` but this can be
 ```ts
 import { web_storage } from 'svelte-web-storage'
 
-export const settings = web_storage('settings, {
+export const settings = web_storage('settings', {
   page_size: 24,
   currency: 'USD',
   language: 'en-US',
@@ -75,21 +94,6 @@ export const settings = web_storage('settings, {
       return `${value.page_size}:${value.currency}:${value.language}`;
     }
   }
-})
-```
-
-### Upgrading Objects
-
-If you add new properties to your settings object, the new default values of those properties will be automatically added to any persisted values. Adding a `theme` property to the previous example would set the store value to `system`, but leave any existing customized properties unchanged. No need to manually handle properties missing from the persisted state, or your settings having possibly undefined values.
-
-```ts
-import { web_storage } from 'svelte-web-storage'
-
-export const settings = web_storage('settings, {
-  page_size: 24,
-  currency: 'USD',
-  language: 'en-US',
-  theme: 'system',
 })
 ```
 
@@ -122,24 +126,24 @@ The criteria for comparing includes:
 - **Handsomeness** of the author
   - that's a joke, to see if anyone read this far ...
 
-| Name                                | Version | Minified | GZipped | Correct | Upgrade | SSR | SK Deps | Session | Sync | Values | TS  | Serialize |
-| ----------------------------------- | ------- | -------: | ------: | :-----: | :-----: | :-: | :-----: | :-----: | :--: | :----: | :-: | :-------: |
-| svelte-web-storage                  | 0.0.2   |     629B |    397B |   ✅    |   ✅    | ✅  |   ✅    |   ✅    |  ✅  |   ✅   | ✅  |    ✅     |
-| svelte-persisted-store              | 0.7.0   |   1.24kB |    650B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| svelte-persistent-store             | 0.1.6   |    1.7kB |    837B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| svelte-backed-store                 | 1.1.1   |    3.5kB |  1.25kB |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| svelte-persistent-writable          | 1.1.6   |    1.4kB |    631B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| svelte-localstorage-writable        | 0.1.3   |     960B |    519B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| svelte-syncable                     | 1.0.4   |          |         |   ❌    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| svelte-storable                     | 1.0.4   |      1kB |    509B |   ✅    |   ❓    | ❌  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| svelte-cached-store                 |         |          |         |   ❌    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| @macfja/svelte-persistent-store     | 2.4.1   |   19.9kB |   7.3kB |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| @macfja/browser-storage-store       | 1.0.0   |    4.2kB |   1.9kB |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| @n0n3br/svelte-persist-store        | 1.0.2   |    8.4kB |   2.9kB |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| @babichjacob/svelte-localstorage    |         |          |         |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| @typhonjs-svelte/simple-web-storage |         |          |         |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| @thegrommet/svelte-syncable         | 2.0.0   |     846B |    447B |   ❌    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
-| @furudean/svelte-persistent-store   | 0.8.0   |     881B |    494B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
+| Name                                | Version | Minified | GZipped | Correct | Upgrade |  SSR  | SK Deps | Session | Sync  | Values |  TS   | Serialize |
+| ----------------------------------- | ------- | -------: | ------: | :-----: | :-----: | :---: | :-----: | :-----: | :---: | :----: | :---: | :-------: |
+| svelte-web-storage                  | 0.0.2   |     629B |    397B |    ✅    |    ✅    |   ✅   |    ✅    |    ✅    |   ✅   |   ✅    |   ✅   |     ✅     |
+| svelte-persisted-store              | 0.7.0   |   1.24kB |    650B |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| svelte-persistent-store             | 0.1.6   |    1.7kB |    837B |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| svelte-backed-store                 | 1.1.1   |    3.5kB |  1.25kB |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| svelte-persistent-writable          | 1.1.6   |    1.4kB |    631B |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| svelte-localstorage-writable        | 0.1.3   |     960B |    519B |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| svelte-syncable                     | 1.0.4   |          |         |    ❌    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| svelte-storable                     | 1.0.4   |      1kB |    509B |    ✅    |    ❓    |   ❌   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| svelte-cached-store                 |         |          |         |    ❌    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| @macfja/svelte-persistent-store     | 2.4.1   |   19.9kB |   7.3kB |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| @macfja/browser-storage-store       | 1.0.0   |    4.2kB |   1.9kB |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| @n0n3br/svelte-persist-store        | 1.0.2   |    8.4kB |   2.9kB |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| @babichjacob/svelte-localstorage    |         |          |         |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| @typhonjs-svelte/simple-web-storage |         |          |         |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| @thegrommet/svelte-syncable         | 2.0.0   |     846B |    447B |    ❌    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
+| @furudean/svelte-persistent-store   | 0.8.0   |     881B |    494B |    ✅    |    ❓    |   ❓   |    ❓    |    ❓    |   ❓   |   ❓    |   ❓   |     ❓     |
 
 ### Methodology:
 
