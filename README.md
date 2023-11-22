@@ -4,10 +4,10 @@ A [Svelte writable store](https://svelte.dev/docs/svelte-store#writable) that sa
 
 ## Features
 
-- ✅ Tiny size - just 629 bytes minified / 397 bytes minified & gzipped
+- ✅ Tiny size - just 656 bytes minified / 417 bytes minified & gzipped
 - ✅ Supports `localStorage` for persistence and cross-tab synchronization
 - ✅ Supports `sessionStorage` for independent per-tab values
-- ✅ Store objects or atomic values
+- ✅ Store objects, primitive values, and arrays
 - ✅ Customizable serialization (uses JSON by default)
 - ✅ New default properties automatically added to persisted values
 - ✅ Server-side-rendering (SSR) compatible
@@ -113,8 +113,8 @@ The criteria for comparing includes:
   - are both localStorage _and_ sessionStorage types of web-storage supported?
 - **Synchronization of browser tabs**
   - are changes in one tab reflected in another when using localStorage?
-- **objects _and_ primitive values**
-  - can it be used with both primitive values and objects
+- **objects, primitive values, and Arrays**
+  - can it be used with primitive values, objects, and arrays
 - **TypeScript** Support
   - are typings provided
 - **Custom Serialization**
@@ -124,7 +124,7 @@ The criteria for comparing includes:
 
 | Name                                | Version | Minified | GZipped | Correct | Upgrade | SSR | SK Deps | Session | Sync | Values | TS  | Serialize |
 | ----------------------------------- | ------- | -------: | ------: | :-----: | :-----: | :-: | :-----: | :-----: | :--: | :----: | :-: | :-------: |
-| svelte-web-storage                  | 0.0.2   |     629B |    397B |   ✅    |   ✅    | ✅  |   ✅    |   ✅    |  ✅  |   ✅   | ✅  |    ✅     |
+| svelte-web-storage                  | 0.0.2   |     656B |    417B |   ✅    |   ✅    | ✅  |   ✅    |   ✅    |  ✅  |   ✅   | ✅  |    ✅     |
 | svelte-persisted-store              | 0.7.0   |   1.24kB |    650B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
 | svelte-persistent-store             | 0.1.6   |    1.7kB |    837B |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |
 | svelte-backed-store                 | 1.1.1   |    3.5kB |  1.25kB |   ✅    |   ❓    | ❓  |   ❓    |   ❓    |  ❓  |   ❓   | ❓  |    ❓     |

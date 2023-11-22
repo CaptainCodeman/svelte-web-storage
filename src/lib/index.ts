@@ -25,10 +25,12 @@ export function web_storage<T>(name: string, defaultValue: T, options?: Options<
 
 	let value: T =
 		typeof defaultValue === 'object'
-			? { ...defaultValue, ...parsed }
+			? Array.isArray(defaultValue)
+				? parsed ?? [...defaultValue]
+				: { ...defaultValue, ...parsed }
 			: persisted
-			? parsed
-			: defaultValue;
+			  ? parsed
+			  : defaultValue;
 
 	const { subscribe, set: _set } = writable(value, () => {
 		if (BROWSER && persist) {
