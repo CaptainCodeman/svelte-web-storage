@@ -59,9 +59,10 @@
 		"svelte": "^4.0.0"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.1.1",
-		"@sveltejs/kit": "^1.27.3",
+		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/package": "^2.2.2",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"prettier": "^3.0.3",
 		"prettier-plugin-svelte": "^3.0.3",
 		"publint": "^0.2.5",
@@ -70,8 +71,8 @@
 		"tslib": "^2.6.2",
 		"tsup": "^7.2.0",
 		"typescript": "^5.2.2",
-		"vite": "^4.5.0",
-		"vitest": "^0.34.6"
+		"vite": "^5.0.0",
+		"vitest": "^1.0.0"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
